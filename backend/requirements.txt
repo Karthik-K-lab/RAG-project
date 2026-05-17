@@ -9,4 +9,3 @@ fastembed
 numpy
 groq
 dotenv
-os
