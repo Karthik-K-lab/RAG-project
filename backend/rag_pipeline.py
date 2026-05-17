@@ -6,9 +6,21 @@ import numpy as np
 import text_clean
 import model
 
-embedding_model = SentenceTransformer(
-    "sentence-transformers/all-MiniLM-L6-v2"
-)
+embedding_model = None
+
+def get_embedding_model():
+
+    global embedding_model
+
+    if embedding_model is None:
+
+        from sentence_transformers import SentenceTransformer
+
+        embedding_model = SentenceTransformer(
+            "sentence-transformers/all-MiniLM-L6-v2"
+        )
+
+    return embedding_model
 
 def pipeline(query, text):
 
@@ -22,9 +34,11 @@ def pipeline(query, text):
 
     chunks = splitter.split_text(text)
 
-    embedded_data = embedding_model.encode(chunks)
+    model_embed = get_embedding_model()
 
-    embedded_query = embedding_model.encode([query])
+    embedded_data = model_embed.encode(chunks)
+    
+    embedded_query = model_embed.encode([query])
 
     similarity = cosine_similarity(
         embedded_query,
