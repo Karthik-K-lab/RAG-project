@@ -1,19 +1,14 @@
 from groq import Groq
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
-
-api_key = os.getenv("API_KEY")
-
-client = Groq(api_key=api_key)
-
-
-def generate_answer(query, top_chunks,similarity_score):
+def generate_answer(query, top_chunks, similarity_score):
+    api_key = os.getenv("API_KEY")
+    if not api_key:
+        raise RuntimeError("API_KEY is missing")
+    client = Groq(api_key=api_key)
 
     completion = client.chat.completions.create(
         model="llama-3.1-8b-instant",
-
         messages=[
             {
                 "role": "system",
@@ -36,11 +31,7 @@ def generate_answer(query, top_chunks,similarity_score):
                 "content": query
             }
         ],
-
         temperature=0.2,
         max_tokens=200
     )
-
-    response = completion.choices[0].message.content
-
-    return response
+    return completion.choices[0].message.content
