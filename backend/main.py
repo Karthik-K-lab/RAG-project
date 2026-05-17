@@ -5,7 +5,7 @@ import rag_pipeline
 
 app = FastAPI()   
 
-origins = ["http://localhost:5173", "http://localhost:8000"]
+origins = ["http://localhost:5173", "https://rag-project-9md1.onrender.com/ask]
 app.add_middleware(
     CORSMiddleware,
 
