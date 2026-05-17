@@ -1,11 +1,10 @@
 uvicorn
 fastapi
 pydantic
-transformers
 langchain_text_splitters
 langchain_community
 scikit-learn
 fastembed
 numpy
 groq
-dotenv
+python-dotenv
