@@ -6,4 +6,4 @@ groq
 numpy
 scikit-learn
 langchain_text_splitters
-sentence-transformers
+fastembed
