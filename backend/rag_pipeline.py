@@ -1,6 +1,3 @@
-      
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-from transformers import pipeline
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 from sklearn.metrics.pairwise import cosine_similarity
