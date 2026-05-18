@@ -79,6 +79,7 @@ def pipeline(query, text):
         return response, []
 
     model_embed = get_embedding_model()
+    query = query.lower()
     query_embedding = np.asarray(
         list(model_embed.embed([query])),
         dtype=np.float32
